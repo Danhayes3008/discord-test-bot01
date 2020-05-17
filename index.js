@@ -7,9 +7,6 @@ const PREFIX = "!";
 var version = '1.0.1';
 var author = 'Daniel Hayes';
 
-// imported JSON files
-bot.msgs = require("./storage/commands.json");
-
 bot.on("ready", () => {
   console.log("This bot is online!");
 });
