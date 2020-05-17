@@ -2,6 +2,9 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 const fs = require("fs");
 const PREFIX = "!";
+// Runs the bot
+bot.login(process.env.BOT_TOKEN);
+
 
 //variables
 var version = '1.0.1';
@@ -63,6 +66,3 @@ bot.on("message", (msg) => {
       break;
   }
 });
-
-// Runs the bot
-bot.login(process.env.BOT_TOKEN);
