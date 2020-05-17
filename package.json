@@ -4,8 +4,7 @@
   "description": "this is the one i made to learn how to make bots",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "danny",
   "license": "ISC",
@@ -13,10 +12,5 @@
     "discord.js": "^12.2.0",
     "request": "2.81.0",
     "fs": "0.0.1-security"
-  },
-  "devDependencies": {
-    "discord.js": "12.2.0",
-    "request": "2.81.0",
-    "nodemon": "^2.0.4"
   }
 }
