@@ -47,7 +47,8 @@ bot.on("message", (msg) => {
         .addField('**Here are the available commands:**', "cssPlease note that this bot uses '!' as a command prefix")
         .addField("General:", "`!ping`**: Simple direct message that gets one responce back**" +
           "\n`!website`: **Shows a youtube video that was supplied with the tutorial**")
-        .addField("Tools:", "`!clear (max 100 messages)`**: Clear up the messages**")
+        .addField("Tools:", "`!clear (max 100 messages)`**: Clear up the messages**" +
+        "`!mute {name} {time}`**: mute a player**")
         .addField("__*Version*__", version, true)
         .addField("__*Author*__", author, true)
         .setColor(0x38F560)
@@ -102,4 +103,4 @@ bot.on("message", (msg) => {
 });
 
 // Runs the bot
-bot.login("NzEwNzkxMDc2ODI2MzE2ODI3.XsF6_Q.PeRV731Nzpk01u9kV7sag1DDEJg");
+bot.login(process.env.BOT_TOKEN);
