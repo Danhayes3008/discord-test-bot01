@@ -106,6 +106,7 @@ bot.on("message", (msg) => {
       let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
       if (quietrole) {
         mutedPerson.roles.cache.find(unmuterole.id);
+        mutedPerson.roles.remove(unmuterole.id);
         // //changes the role to mute
         // if (quietrole) {
         // mutedPerson.roles.remove(quietrole.id);
