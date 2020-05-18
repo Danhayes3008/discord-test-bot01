@@ -48,21 +48,11 @@ bot.on("message", (msg) => {
     // Gets the list of commands
     case "help":
       const embed = new Discord.MessageEmbed()
-        .addField(
-          "**Here are the available commands:**",
-          "cssPlease note that this bot uses '!' as a command prefix"
-        )
-        .addField(
-          "General:",
-          "`!ping`**: Simple direct message that gets one responce back**" +
-            "\n`!website`: **Shows a youtube video that was supplied with the tutorial**"
-        )
-        .addField(
-          "Tools:",
-          "`!clear (max 100 messages)`**: Clear up the messages**" +
-            "\n`!mute {name} {time}`**: mute a player**" +
-            "\n`!unmute {name}`**: unmute a player**"
-        )
+        .addField('**Here are the available commands:**', "cssPlease note that this bot uses '!' as a command prefix")
+        .addField("General:", "`!ping`**: Simple direct message that gets one responce back**" +
+          "\n`!website`: **Shows a youtube video that was supplied with the tutorial**")
+        .addField("Tools:", "`!clear (max 100 messages)`**: Clear up the messages**" +
+        "\n`!mute {name} {time}`**: mute a player**")
         .addField("__*Version*__", version, true)
         .addField("__*Author*__", author, true)
         .setColor(0x38f560);
@@ -101,30 +91,24 @@ bot.on("message", (msg) => {
         //changes the role to temp
         person.roles.add(mainrole.id);
         person.roles.remove(muterole.id);
-        msg.channel.send(`@${person.user.tag} has been unmuted!`);
+        msg.channel.send(`@${person.user.tag} has been unmuted!`)
       }, ms(time));
       break;
 
-    case "unmute":
-      //selects the user entered
-      let mutedPerson = msg.guild.member(
-        msg.mentions.users.first() || msg.guild.members.get(args[1])
-      );
-      if (!mutedPerson) return msg.reply("Could'nt find them!");
-      //the roles that will be swiched around
-      let quietrole = msg.guild.roles.cache.find(
-        (role) => role.name === "mute"
-      );
-      let unmuterole = msg.guild.roles.cache.find(
-        (role) => role.name === "temp"
-      );
-      if (!unmuterole) return msg.reply("Could'nt find the temp role");
-      //changes the role to mute
-      if (quietrole) {
+      case 'unmute':
+        //selects the user entered
+        let mutedPerson = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
+        if (!mutedPerson) return msg.reply("Could'nt find them!");
+        //the roles that will be swiched around
+        let quietrole = msg.guild.roles.cache.find(role => role.name === "mute");
+        let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
+        if (!unmuterole) return msg.reply("Could'nt find the temp role");
+        //changes the role to mute
+        if (quietrole) {
         mutedPerson.roles.remove(quietrole.id);
         mutedPerson.roles.add(unmuterole.id);
         msg.channel.send(`@${mutedPerson.user.tag} has now been unmuted `);
-      }
+      };
   }
 });
 
