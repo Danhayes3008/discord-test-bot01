@@ -48,7 +48,7 @@ bot.on("message", (msg) => {
         .addField("General:", "`!ping`**: Simple direct message that gets one responce back**" +
           "\n`!website`: **Shows a youtube video that was supplied with the tutorial**")
         .addField("Tools:", "`!clear (max 100 messages)`**: Clear up the messages**" +
-        "`!mute {name} {time}`**: mute a player**")
+        "\n`!mute {name} {time}`**: mute a player**")
         .addField("__*Version*__", version, true)
         .addField("__*Author*__", author, true)
         .setColor(0x38F560)
