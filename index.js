@@ -102,5 +102,6 @@ bot.on("message", (msg) => {
   }
 });
 
+
 // Runs the bot
 bot.login(process.env.BOT_TOKEN);
