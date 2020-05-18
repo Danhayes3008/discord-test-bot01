@@ -97,7 +97,7 @@ bot.on("message", (msg) => {
       break;
 
     case 'unmute':
-      if (!msg.member.roles.cache.find(r => r.name === "ADMIN")) return msg.channel.send("Unortherised command!")
+      if (!msg.member.roles.cache.find(r => r.name === "Admin")) return msg.channel.send("Unortherised command!")
       //selects the user entered
       let mutedPerson = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
       if (mutedPerson) return msg.reply("Could'nt find them!");
