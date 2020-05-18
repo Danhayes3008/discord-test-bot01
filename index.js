@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const fs = require("fs");
+const ms = require('ms');
 const PREFIX = "!";
 
 //variables
@@ -58,6 +59,31 @@ bot.on("message", (msg) => {
       if (!args[1]) return msg.reply("Error please define a second arg");
       msg.channel.bulkDelete(args[1]);
       break;
+
+    //this will allow us to mute people
+    case 'mute':
+      //selects the user entered
+      let person = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
+      if (!person) return msg.reply("Could'nt find them!");
+      //the roles that will be swiched around
+      let mainrole = msg.guild.roles.cache.find(role => role.name === "temp");
+      let muterole = msg.guild.roles.cache.find(role => role.name === "mute");
+      if (!muterole) return msg.reply("Could'nt find the mute role");
+      let time = args[2];
+      // checks how long
+      if (!time) {
+        return msg.reply("you didnt say for how long");
+      }
+      //changes the role to mute
+      person.roles.remove(mainrole.id);
+      person.roles.add(muterole.id);
+      msg.channel.send(`@${person.user.tag} has now been muted for ${ms(ms(time))}`);
+      setTimeout(function () {
+        //changes the role to temp
+        person.addRole(mainrole.id);
+        person.removeRole(muterole.id);
+        msg.channel.send(`@${peson.user.tag} has been unmuted!`)
+      }, ms(time));
   }
 });
 
