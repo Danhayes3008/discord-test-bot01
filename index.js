@@ -100,19 +100,19 @@ bot.on("message", (msg) => {
       if (!msg.member.roles.cache.find(r => r.name === "ADMIN")) return msg.channel.send("Unortherised command!")
       //selects the user entered
       let mutedPerson = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
-      if (!mutedPerson) return msg.reply("Could'nt find them!");
+      if (mutedPerson) return msg.reply("Could'nt find them!");
       //the roles that will be swiched around
-      let quietrole = msg.guild.roles.cache.find(role => role.name === "mute");
-      let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
-      if (quietrole) {
-        mutedPerson.roles.cache.find(unmuterole.id);
-        mutedPerson.roles.remove(unmuterole.id);
+      // let quietrole = msg.guild.roles.cache.find(role => role.name === "mute");
+      // let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
+      // if (quietrole) {
+      //   mutedPerson.roles.cache.find(unmuterole.id);
+      //   mutedPerson.roles.remove(unmuterole.id);
         // //changes the role to mute
         // if (quietrole) {
         // mutedPerson.roles.remove(quietrole.id);
         // mutedPerson.roles.add(unmuterole.id);
         // msg.channel.send(`@${mutedPerson.user.tag} has now been unmuted `);
-      };
+      // };
   }
 });
 
