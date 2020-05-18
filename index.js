@@ -97,27 +97,17 @@ bot.on("message", (msg) => {
       break;
 
     case 'unmute':
-      if (!msg.member.roles.cache.find(r => r.name === "admin")) return msg.channel.send("Unortherised command!")
-      //selects the user entered
-      let mutedPerson = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
-      if (!mutedPerson) return msg.reply("Could'nt find them!");
-      if (mutedPerson) {
-        person.roles.add(mainrole.id);
-        person.roles.remove(muterole.id);
-        msg.channel.send(`@${person.user.tag} has been unmuted!`)
-      };
-      //the roles that will be swiched around
-      // let quietrole = msg.guild.roles.cache.find(role => role.name === "mute");
-      // let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
-      // if (quietrole) {
-      //   mutedPerson.roles.cache.find(unmuterole.id);
-      //   mutedPerson.roles.remove(unmuterole.id);
-        // //changes the role to mute
-        // if (quietrole) {
-        // mutedPerson.roles.remove(quietrole.id);
-        // mutedPerson.roles.add(unmuterole.id);
-        // msg.channel.send(`@${mutedPerson.user.tag} has now been unmuted `);
-      // };
+      let muted = msg.guild.member(
+        msg.mentions.users.first() || msg.guild.members.get(args[1])
+      );
+      if (!muted) return msg.reply("Could'nt find them!");
+      let silanced = msg.guild.roles.cache.find((role) => role.name === "mute");
+      let talk = msg.guild.roles.cache.find((role) => role.name === "temp");
+      if (!silanced) return msg.reply("Could'nt find the mute role");
+      person.roles.remove(silanced.id);
+      person.roles.add(talk.id);
+      msg.channel.send(`@${person.user.tag} has now been unmuted `);
+      break;
   }
 });
 
