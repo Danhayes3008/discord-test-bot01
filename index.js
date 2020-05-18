@@ -83,7 +83,7 @@ bot.on("message", (msg) => {
         //changes the role to temp
         person.roles.add(mainrole.id);
         person.roles.remove(muterole.id);
-        msg.channel.send(`@${peson.user.tag} has been unmuted!`)
+        msg.channel.send(`@${person.user.tag} has been unmuted!`)
       }, ms(time));
       break;
 
