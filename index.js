@@ -1,5 +1,6 @@
-const Discord = require("discord.js");
-const bot = new Discord.Client();
+const Discord = require('discord.js');
+const {Client, Attachment, MessageEmbed} = require('discord.js');
+const bot = new Client();
 const fs = require("fs");
 const ms = require("ms");
 const PREFIX = "!";
@@ -56,7 +57,7 @@ bot.on("message", (msg) => {
         .addField("__*Version*__", version, true)
         .addField("__*Author*__", author, true)
         .setColor(0x38f560);
-      msg.channel.send(embed);
+      msg.author.send(embed);
       break;
 
     // clear messages command
