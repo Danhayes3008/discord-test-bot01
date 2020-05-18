@@ -84,8 +84,22 @@ bot.on("message", (msg) => {
         person.removeRole(muterole.id);
         msg.channel.send(`@${peson.user.tag} has been unmuted!`)
       }, ms(time));
+      break;
+
+      case 'unmute':
+        //selects the user entered
+        let mutedPerson = msg.guild.member(msg.mentions.users.first() || msg.guild.members.get(args[1]))
+        if (!mutedPerson) return msg.reply("Could'nt find them!");
+        //the roles that will be swiched around
+        let quietrole = msg.guild.roles.cache.find(role => role.name === "mute");
+        let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
+        if (!unmuterole) return msg.reply("Could'nt find the temp role");
+        //changes the role to mute
+        mutedPerson.roles.remove(quietrole.id);
+        mutedPerson.roles.add(unmuterole.id);
+        msg.channel.send(`@${mutedPerson.user.tag} has now been unmuted `);
   }
 });
 
 // Runs the bot
-bot.login(process.env.BOT_TOKEN);
+bot.login("NzEwNzkxMDc2ODI2MzE2ODI3.XsF6_Q.PeRV731Nzpk01u9kV7sag1DDEJg");
