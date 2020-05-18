@@ -96,9 +96,11 @@ bot.on("message", (msg) => {
         let unmuterole = msg.guild.roles.cache.find(role => role.name === "temp");
         if (!unmuterole) return msg.reply("Could'nt find the temp role");
         //changes the role to mute
+        if (quietrole) {
         mutedPerson.roles.remove(quietrole.id);
         mutedPerson.roles.add(unmuterole.id);
         msg.channel.send(`@${mutedPerson.user.tag} has now been unmuted `);
+      };
   }
 });
 
